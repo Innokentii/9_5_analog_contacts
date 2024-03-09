@@ -1,0 +1,77 @@
+/*=================================================================================*/
+/*                             ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ                               */
+/*VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV*/
+
+:root {
+    --w_h_modal_win: 200px; /*(ширина и высота карточки модального окна);*/
+    --bord_modal_win: 4px; /*(толщина рамки border карточки модального окна);*/
+    --height__head_website: 80px; /*(высота шапки сайта);*/
+    --bord_head_website: 2px; /*(толщина рамки шапки сайта));*/
+}
+
+/*=================================================================================*/
+/*                                  СТИЛИЗАЦИЯ                                    */
+/*VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV*/
+
+body {
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    font-family: sans-serif;
+}
+
+/*_______главная страница_______*/
+
+body {
+    background: white;
+}
+
+/*________3_тип шапки______________*/
+
+.head_website_dempf_cl {
+    /*фикцированный (демпфер)*/
+    width: calc(100% - var(--bord_head_website)*2);
+    height: var(--height__head_website);
+}
+
+.head_website_cl {
+    /*фикцированный*/
+    width: 100%;
+    height: var(--height__head_website);
+    border-bottom: solid var(--bord_head_website) black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    background-color: white;
+}
+
+@media (max-width: 768px) {
+    .head_website_cl, .head_website_dempf_cl {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        height: auto;
+        gap: 5px;
+    }
+}
+
+/*___________________каталог_____________________*/
+
+.catalog_cl {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-right: solid 1px black;
+}
+
+.catalog_cl > a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: bolder;
+}
