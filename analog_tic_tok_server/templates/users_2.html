@@ -1,0 +1,116 @@
+{% extends "main.html" %}
+
+{% block main %}
+
+<Style>
+    .scroll_block_cl {
+        width: 100vw;
+        overflow-x: scroll;
+    }
+    .table_users_cl {
+        border-collapse: collapse;
+    }
+    .table_users_cl > thead > tr > th, .table_users_cl > thead > tr > td  {
+        border: 2px solid black;
+    }
+
+</Style>
+<div>
+    <h1>Список пользователей</h1>
+    <div class="scroll_block_cl">
+        <table class="table_users_cl">
+            <thead id="thead_users_id">
+                <tr>
+                    <th>id</th> <!--0-->
+                    <th>login</th> <!--1-->
+                    <th>password</th> <!--2-->
+                    <th>phone</th> <!--3-->
+                    <th>name</th> <!--4-->
+                    <th>lastname</th> <!--5-->
+                    <th>date_birth</th> <!--6-->
+                    <th>mail</th> <!--7-->
+                    <th>advertisement</th> <!--8-->
+                    <th>email_confirmation</th> <!--9-->
+                    <th>ban</th> <!--10-->
+                    <th>ban_reason</th> <!--11-->
+                    <th>exclusive</th> <!--12-->
+                    <th>lile</th> <!--13-->
+                    <th>dislike</th> <!--14-->
+                    <th>subscriptions</th> <!--15-->
+                    <th>subscription_request</th> <!--16-->
+                    <th>subscription_invitation</th> <!--17-->
+                    <th>subscriptions_group</th> <!--18-->
+                    <th>subscription_request_group</th> <!--19-->
+                    <th>subscription_invitation_group</th> <!--20-->
+                    <th>q (Удаление)</th> <!--21-->
+                    <th>w (вход)</th> <!--22-->
+                    <th>e (должность)</th> <!--23-->
+                    <th>r (описание)</th> <!--24-->
+                    <th>t (telegram)</th> <!--25-->
+                    <th>y (whatsapp)</th> <!--26-->
+                    <th>u (web)</th> <!--27-->
+                    <th>i (сториз видят все)</th> <!--28-->
+                    <th>o (закрытый акаунт)</th> <!--29-->
+                    <th>p (Темный/светлый режим)</th> <!--30-->
+                    <th>z</th> <!--31-->
+                    <th>x</th> <!--32-->
+                    <th>c</th> <!--33-->
+                    <th>v</th> <!--34-->
+                    <th>b</th> <!--35-->
+                    <th>n</th> <!--36-->
+                    <th>m</th> <!--37-->
+                    <th>a</th> <!--38-->
+                    <th>s</th> <!--39-->
+                    <th>d</th> <!--40-->
+                    <th>f</th> <!--41-->
+                    <th>g</th> <!--42-->
+                    <th>h</th> <!--43-->
+                    <th>j</th> <!--44-->
+                    <th>k</th> <!--45-->
+                    <th>кнопка бана</th> <!--46-->
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<script>
+    const thead_users = document.getElementById('thead_users_id');
+    // GET запрос данных о пользователях;
+    function get_users_data_f() {
+        let xhr = new XMLHttpRequest(); // XMLHttp метод для ajax "GET" запроса;
+        xhr.open('GET', '/get_users_data', true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let data = JSON.parse(xhr.responseText); // Cписок имен в JSON формате;
+                console.log(data);
+                if (data.length !=0) {
+                    for (let i=0; i<data.length; i++) {
+                        let new_tr = document.createElement('tr');
+                        thead_users.append(new_tr);
+                        for (let n=0; n<47; n++) {
+                            let new_td = document.createElement('td');
+                            if (n !=46) {
+                                new_td.innerText = data[i][n];
+                                new_tr.append(new_td);
+                            }
+                            else {
+                                new_td.innerText = data[i][n];
+                                new_tr.append(new_td);
+                                let new_div = document.createElement('div');
+                                new_div.id = `ban_bottom_${data[i][0]}_id`;
+                                new_div.class = 'ban_bottom_cl';
+                                new_div.innerText = 'BAN';
+                                new_td.append(new_div);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        xhr.send();
+    };
+    get_users_data_f()
+</script>
+
+
+{% endblock %}

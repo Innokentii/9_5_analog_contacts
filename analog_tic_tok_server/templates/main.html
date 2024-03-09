@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Название сайта</title>
+    <link rel="stylesheet" href="/static/main_css.css">
+    <link rel="icon" href="" type="image/x-icon">
+</head>
+<body>
+    <div class="head_website_dempf_cl" id="head_website_dempf_id">
+        <!--Фиксированный (демпфер)-->
+    </div>
+     <div class="head_website_cl" id="head_website_id">
+        <!--Фиксированный-->
+        <div class="catalog_cl" id="catalog_id">
+            <!--каталог-->
+            <a href="/consol_1"><div>Consol</div></a>
+            <a href="/users_2"><div>Users</div></a>
+            <a href="/message_3"><div>message</div></a>
+            <a href="/comment_4"><div>comment</div></a>
+            <a href="/img_5"><div>img</div></a>
+            <a href="/audio_6"><div>audio</div></a>
+            <a href="/video_7"><div>video</div></a>
+        </div>
+    </div>
+
+    {% block main %}
+    {% endblock %}
+    <script src="/static/main_js.js"></script>
+</body>
+</html>
